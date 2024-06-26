@@ -6,7 +6,7 @@ import { Line } from 'react-chartjs-2';
 
 const App = () => {
   const [code, setCode] = useState('');
-  const [complexity, setComplexity] = useState("");
+  const [complexity, setComplexity] = useState('');
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [],
@@ -14,10 +14,13 @@ const App = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/analyze', {
-        code,
-      });
-      console.log(response)
+      const response = await axios.post(
+        'https://time-complexity-visualizer-back-end.onrender.com/analyze',
+        {
+          code,
+        }
+      );
+      console.log(response);
       setComplexity(response.data.complexity);
 
       // setChartData({
@@ -49,10 +52,17 @@ const App = () => {
       }}
     >
       <div style={{ width: '50%', height: '100vh' }}>
-        <Codeblock code={code} setCode={setCode} handleSubmit={handleSubmit} />
+        <Codeblock
+          code={code}
+          setCode={setCode}
+          handleSubmit={handleSubmit}
+        />
       </div>
       <div style={{ width: '50%', height: '100vh' }}>
-        <TimeComplexity complexity={complexity} setComplexity={setComplexity} />
+        <TimeComplexity
+          complexity={complexity}
+          setComplexity={setComplexity}
+        />
       </div>
     </div>
   );
