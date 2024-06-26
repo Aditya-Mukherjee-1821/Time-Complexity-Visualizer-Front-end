@@ -12,6 +12,7 @@
 }
 
 .time-complexity {
+  font-family: monospace;
   display: flex;
   flex-direction: column;
   margin-top: 2%;
@@ -21,3 +22,46 @@
 .custom-button {
   margin-top: 2%;
 }
+
+.console{
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: black;
+  height: 50%;
+  width: 100%;
+  padding: 2%;
+  font-family: monospace;
+  overflow: auto;
+}
+
+.terminal-header{
+  background-color:#5D666D;
+  color: white;
+  font-size: larger;
+  padding-left: 1%;
+  padding-bottom: 0.8%;
+  width: 100%;
+  margin-top: 2%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+ .terminal-img{
+  width: 3%;
+ }
+
+ .stats{
+  padding: 2%;
+  border-radius: 10px;
+  width: 100%;
+  background-color: rgb(240, 240, 240);
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+ }
+
+ .complexity-icons{
+  width: 2%;
+ }
+

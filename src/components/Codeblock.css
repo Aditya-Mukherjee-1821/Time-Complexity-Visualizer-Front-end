@@ -7,17 +7,44 @@
   overflow: auto;
 }
 
-.header{
+.header {
   border-bottom: 0.5px solid rgb(163, 158, 158);
 }
 
-.code-editor{
+.code-editor {
   display: flex;
   flex-direction: column;
   margin-top: 2%;
   overflow: auto;
 }
 
-.custom-button{
+.custom-button {
   margin-top: 2%;
 }
+
+.custom-text-area {
+  outline: none;
+  font-family: monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  overflow: hidden;
+}
+
+.text-area-container {
+  display: flex;
+}
+
+.line-numbers {
+  font-family: monospace; /* Optional: Use a monospace font for consistent width */
+  padding-top: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #f0f0f0;
+  border-right: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
