@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TimeComplexity from './components/TimeComplexity';
+import Codeblock from './components/Codeblock';
+import axios from 'axios';
+import { Line } from 'react-chartjs-2';
 
-function App() {
+const App = () => {
+  const [code, setCode] = useState('');
+  const [complexity, setComplexity] = useState("");
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [],
+  });
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/analyze', {
+        code,
+      });
+      console.log(response)
+      setComplexity(response.data.complexity);
+
+      // setChartData({
+      //   labels: response.data.chartData
+      //     ? response.data.chartData.map((_, index) => `Input Size ${index + 1}`)
+      //     : [],
+      //   datasets: [
+      //     {
+      //       label: 'Time Complexity',
+      //       data: response.data.chartData || [],
+      //       borderColor: 'rgba(75,192,192,1)',
+      //       fill: false,
+      //     },
+      //   ],
+      // });
+    } catch (error) {
+      console.error('Error analyzing code:', error);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <div style={{ width: '50%', height: '100vh' }}>
+        <Codeblock code={code} setCode={setCode} handleSubmit={handleSubmit} />
+      </div>
+      <div style={{ width: '50%', height: '100vh' }}>
+        <TimeComplexity complexity={complexity} setComplexity={setComplexity} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
